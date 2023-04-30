@@ -31,18 +31,22 @@ const getEventInforByID = async (req, res) => {
       .where("eventID", "==", query)
       .get();
 
-    const data = snapshot.docs.map((doc) => ({
-      ...doc.data(),
-      dateStart: moment(doc.data().dateStart.toDate()).format("DD/MM/YYYY"),
-      dateEnd: moment(doc.data().dateEnd.toDate()).format("DD/MM/YYYY"),
-    }));
-
-    if (data.length === 0) {
+    if (snapshot.empty) {
       return res.status(404).json({
         message: "Không tìm thấy sự kiện với ID này",
         currentDate: moment().format("DD/MM/YYYY"),
       });
     }
+
+    const data = {
+      ...snapshot.docs[0].data(),
+      dateStart: moment(snapshot.docs[0].data().dateStart.toDate()).format(
+        "DD/MM/YYYY"
+      ),
+      dateEnd: moment(snapshot.docs[0].data().dateEnd.toDate()).format(
+        "DD/MM/YYYY"
+      ),
+    };
 
     res.json({
       message: "Lấy dữ liệu thành công",
