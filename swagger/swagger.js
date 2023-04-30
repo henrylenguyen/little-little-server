@@ -30,6 +30,10 @@ const options = {
         url: "http://localhost:1812",
         description: "Local server",
       },
+      {
+        url: "https://little-little.herokuapp.com",
+        description: "Server heroku",
+      },
     ],
   },
   apis: ["./routes/*.js"],
