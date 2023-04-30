@@ -1,0 +1,61 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API LITTLE & LITTLE",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:1812",
+      "description": "Local server"
+    }
+  ],
+
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT",
+        "description": "Token để xác thực hệ thống"
+      }
+    }
+   
+  },
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "tags": [
+    {
+      "name": "EventManagement",
+      "description": "APIs quản lý sự kiện"
+    }
+  ],
+  "paths": {
+    "/api/event/getEventList": {
+      "get": {
+        "summary": "Lấy danh sách sự kiện",
+        "tags": ["EventManagement"],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Lấy danh sách thành công"
+            
+          },
+          "401": {
+            "description": "Lỗi xác thực"
+          },
+          "500": {
+            "description": "Server gặp lỗi"
+          }
+        }
+      }
+    }
+  }
+}
