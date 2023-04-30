@@ -13,7 +13,7 @@ const getEventList = async (req, res) => {
 
     res.json({
       message: "Lấy dữ liệu thành công",
-      data: docs,
+      content: docs,
       currentDate: moment().format("DD/MM/YYYY"),
     });
   } catch (error) {
