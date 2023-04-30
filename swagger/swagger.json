@@ -50,7 +50,40 @@
         "responses": {
           "200": {
             "description": "Lấy danh sách thành công"
-            
+          },
+          "401": {
+            "description": "Lỗi xác thực"
+          },
+          "500": {
+            "description": "Server gặp lỗi"
+          }
+        }
+      }
+    },
+    "/api/event/getEventInforByID": {
+      "get": {
+        "summary": "Lấy thông tin sự kiện theo ID",
+        "tags": ["EventManagement"],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "eventID",
+            "in": "query",
+            "description": "ID sự kiện cần lấy",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 1
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Lấy thông tin thành công thành công"
           },
           "401": {
             "description": "Lỗi xác thực"
