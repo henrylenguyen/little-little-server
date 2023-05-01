@@ -7,10 +7,9 @@ const app = express();
 const port = process.env.PORT;
 const bodyParser = require("body-parser");
 const swaggerSetup = require("./swagger/swagger.js")
-const path = require("path");
-const db = require("./models/root.model.js");
 const router = require("./routes/token.routes.js");
 const eventRouter = require("./routes/event.routes.js");
+const contactRouter = require("./routes/contact.routes.js");
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors());
@@ -29,6 +28,7 @@ async function startServer() {
 
   app.use("/api", router);
   app.use("/api/event", eventRouter);
+  app.use("/api/contact", contactRouter);
   // Set up Swagger middleware
   swaggerSetup(app);
   app.listen(port, () => {
