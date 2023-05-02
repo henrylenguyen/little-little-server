@@ -20,7 +20,12 @@ const addContactValidation = (req, res, next) => {
 
 const addContactController = async (req, res) => {
   try {
-    const contact = req.body;
+    const now = new Date();
+    const createdAt = now.toISOString();
+    const contact = {
+      ...req.body,
+      createAt: createdAt,
+    };
     await addContact(contact);
     return res.status(200).json({
       message: "Gửi liên hệ thành công",
