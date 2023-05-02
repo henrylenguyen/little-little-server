@@ -39,6 +39,10 @@
     {
       "name": "ContactManagement",
       "description": "APIs quản lý liên hệ"
+    },
+    {
+      "name": "TicketManagement",
+      "description": "APIs quản lý vé cổng"
     }
   ],
   "paths": {
@@ -182,6 +186,28 @@
         "responses": {
           "200": {
             "description": "Lấy danh sách thành công"
+          },
+          "401": {
+            "description": "Lỗi xác thực"
+          },
+          "500": {
+            "description": "Server gặp lỗi"
+          }
+        }
+      }
+    },
+    "/api/ticket/getTicketInfor": {
+      "get": {
+        "summary": "Lấy thông tin vé cổng",
+        "tags": ["TicketManagement"],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Lấy danh sách vé cổng thành công"
           },
           "401": {
             "description": "Lỗi xác thực"
