@@ -217,6 +217,85 @@
           }
         }
       }
+    },
+    "/api/ticket/getTicketList": {
+      "get": {
+        "summary": "Lấy thông tin danh sách vé đã đặt",
+        "tags": ["TicketManagement"],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Lấy danh sách vé đã đặt thành công"
+          },
+          "401": {
+            "description": "Lỗi xác thực"
+          },
+          "500": {
+            "description": "Server gặp lỗi"
+          }
+        }
+      }
+    },
+    "/api/ticket/addTicketInfor": {
+      "post": {
+        "summary": "Gửi thông tin đặt vé",
+        "tags": ["TicketManagement"],
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  },
+                  "phone": {
+                    "type": "string"
+                  },
+                  "amount": {
+                    "type": "integer"
+                  },
+                  "expiry": {
+                    "type": "string"
+                  },
+                  
+                  "paymentAmount": {
+                    "type": "integer"
+                  },
+                  "ticketRef": {
+                    "type": "string"
+                  }
+                },
+                "required": ["name", "email", "phone", "amount", "expiry","paymentAmount","ticketRef"]
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Gửi thông tin đặt vé thành công"
+          },
+          "401": {
+            "description": "Lỗi xác thực"
+          },
+          "500": {
+            "description": "Server gặp lỗi"
+          }
+        }
+      }
     }
   }
 }
