@@ -150,6 +150,7 @@ const addTicketInforController = async (req, res) => {
       message: "Thanh toán thành công",
       datePayment: moment(datePayment).format("DD/MM/YYYY hh:mm:ss"),
       content: {
+        id:id,
         ...rest,
         ticketInfor: ticketInforData,
         ticketPayment: ticketPayments,
